@@ -8,7 +8,7 @@ import exphbs from "express-handlebars";
 import path from "path";
 import userRoutes from "./routes/userRoutes";
 import adminRoutes from "./routes/adminRoutes";
-import session from "express-session";
+//import session from "express-session";
 import flash from "connect-flash";
 
 
@@ -49,15 +49,15 @@ class Server {
 		this.app.use(express.json()); //habilitamos el intercambio de objetos json entre aplicaciones
 		this.app.use(express.urlencoded({ extended: false }));//habilitamos para recibir datos a traves de formularios html.
 
-		this.app.use(flash());
+		//this.app.use(flash());
 
 		//Variables globales
-		this.app.use((req, res, next) => {
-			this.app.locals.error_session = req.flash('error_session');
-			//this.app.locals.confirmacion = req.flash('confirmacion');
-			this.app.locals.login = req.session.auth;
-			next();
-		});
+		// this.app.use((req, res, next) => {
+		// 	this.app.locals.error_session = req.flash('error_session');
+		// 	//this.app.locals.confirmacion = req.flash('confirmacion');
+		// 	this.app.locals.login = req.session.auth;
+		// 	next();
+		// });
 		//Variables globales
 
 	}

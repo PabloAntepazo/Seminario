@@ -32,10 +32,21 @@ class UserController {
                 //res.redirect("./error");
             }
             if (result.contrasenia == password && result.mail == mail) {
-                //res.send({ "Bienvenido!": result.nombre }); 
-                const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
-                res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
-                return;
+                //req.session.user = result;
+                //req.session.auth = true;
+                if ((result === null || result === void 0 ? void 0 : result.rol) == 'admin') {
+                    //req.session.admin = true;
+                    //res.redirect("../admin/home");
+                    const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
+                    res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol });
+                    return;
+                }
+                else {
+                    //req.session.admin = false;
+                    const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
+                    res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol });
+                    return;
+                }
             }
             if (result.contrasenia != password || result.mail != mail) {
                 //return res.status(404).json({ message: "Usuario no registrado" });

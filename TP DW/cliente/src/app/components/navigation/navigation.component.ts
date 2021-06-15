@@ -8,14 +8,19 @@ import { Router } from '@angular/router'
 })
 export class NavigationComponent implements OnInit {
 
+  login_: boolean = false;
   constructor(private usuariosService: UsuariosService) { }
 
   ngOnInit(): void {
-  }
+    this.usuariosService.logued$.subscribe(log => {
+      this.login_ = true;})
+
+    }
 
   logout() {
-    //Es de notar que la redireccion del metodo logOut podria haberse hecho aqui y dejar el servicio lo mas acotado posible.
-    this.usuariosService.logOut();
-  }
+      //Es de notar que la redireccion del metodo logOut podria haberse hecho aqui y dejar el servicio lo mas acotado posible.
+      this.usuariosService.logOut();
+      this.login_ = false
+    }
 
 }

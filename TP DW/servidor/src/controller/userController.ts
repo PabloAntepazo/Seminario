@@ -2,9 +2,6 @@ import { Request, Response } from 'express';
 import userModel from "../models/userModel";
 import jwt from "jsonwebtoken";
 //import bcrypt from "bcrypt";
-
-import flash from "connect-flash";
-
 class UserController {
 
 	public signin(req: Request, res: Response) {
@@ -23,19 +20,19 @@ class UserController {
 			//res.redirect("./error");
 		}
 		if (result.contrasenia == password && result.mail == mail) {
-			req.session.user = result;
-			req.session.auth = true;
+			//req.session.user = result;
+			//req.session.auth = true;
 			if (result?.rol == 'admin') {
-				req.session.admin = true;
+				//req.session.admin = true;
 				//res.redirect("../admin/home");
 				const token: string = jwt.sign({ _id: result.id }, "secretKey");
-				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
+				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol });
 				return;
 			}
 			else {
-				req.session.admin = false;
+				//req.session.admin = false;
 				const token: string = jwt.sign({ _id: result.id }, "secretKey");
-				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
+				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol });
 				return;
 			}
 

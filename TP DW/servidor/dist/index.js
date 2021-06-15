@@ -12,6 +12,7 @@ const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const express_handlebars_1 = __importDefault(require("express-handlebars"));
 const path_1 = __importDefault(require("path"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
+const adminRoutes_1 = __importDefault(require("./routes/adminRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -35,11 +36,20 @@ class Server {
         this.app.use(cors_1.default()); //iniciamos cors
         this.app.use(express_1.default.json()); //habilitamos el intercambio de objetos json entre aplicaciones
         this.app.use(express_1.default.urlencoded({ extended: false })); //habilitamos para recibir datos a traves de formularios html.
+        //this.app.use(flash());
+        //Variables globales
+        // this.app.use((req, res, next) => {
+        // 	this.app.locals.error_session = req.flash('error_session');
+        // 	//this.app.locals.confirmacion = req.flash('confirmacion');
+        // 	this.app.locals.login = req.session.auth;
+        // 	next();
+        // });
         //Variables globales
     }
     routes() {
         this.app.use(indexRoutes_1.default);
         this.app.use("/user", userRoutes_1.default); //user sera un objeto existene en la app.
+        this.app.use("/admin", adminRoutes_1.default); //user sera un objeto existene en la app.
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

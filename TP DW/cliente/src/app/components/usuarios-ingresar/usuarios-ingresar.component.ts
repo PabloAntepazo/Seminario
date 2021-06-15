@@ -27,8 +27,16 @@ export class UsuariosIngresarComponent implements OnInit {
       res => {
         let result: any = res;
         console.log(result);
-        localStorage.setItem('token',result.token);
-        this.router.navigate(['usuarios/habitaciones']);
+        localStorage.setItem('rol', result.rol);
+        localStorage.setItem('token', result.token);
+        this.usuariosService.logued$.emit();
+        if (result.rol == "admin") {
+          console.log(result);
+          this.router.navigate(['usuarios/registrar'])
+        }
+        else {
+          this.router.navigate(['usuarios/habitaciones']);
+        }
       },
       err => {
         console.log(err.error.message);
