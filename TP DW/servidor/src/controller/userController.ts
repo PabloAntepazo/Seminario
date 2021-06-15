@@ -3,6 +3,8 @@ import userModel from "../models/userModel";
 import jwt from "jsonwebtoken";
 //import bcrypt from "bcrypt";
 
+import flash from "connect-flash";
+
 class UserController {
 
 	public signin(req: Request, res: Response) {
@@ -21,10 +23,22 @@ class UserController {
 			//res.redirect("./error");
 		}
 		if (result.contrasenia == password && result.mail == mail) {
-			//res.send({ "Bienvenido!": result.nombre }); 
-			const token: string = jwt.sign({ _id: result.id }, "secretKey");
-			res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
-			return;
+			req.session.user = result;
+			req.session.auth = true;
+			if (result?.rol == 'admin') {
+				req.session.admin = true;
+				//res.redirect("../admin/home");
+				const token: string = jwt.sign({ _id: result.id }, "secretKey");
+				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
+				return;
+			}
+			else {
+				req.session.admin = false;
+				const token: string = jwt.sign({ _id: result.id }, "secretKey");
+				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
+				return;
+			}
+
 		}
 		if (result.contrasenia != password || result.mail != mail) {
 			//return res.status(404).json({ message: "Usuario no registrado" });
