@@ -1,0 +1,43 @@
+<div class="d-flex flex-row bd-highlight mb-3">
+    <div class="font-weight-light" style="width: 8rem;"></div>
+    <div class="row my-4 d-flex justify-content-start">
+        <div class="col-md-3.2 mx-auto">
+            <div class="card text-center">
+                <div class="card-header"> </div>
+                <h2>Listado de Pedidos</h2>
+                <div class="card-body">
+                    <table border="1">
+                        <theader>
+                            <th>Pedido</th>
+                            <th>Fecha</th>
+                            <th>Calle</th>
+                            <th>Altura</th>
+                            <th>Total</th>
+                        </theader>
+                        {{#each pedidos}}
+                        <tr>
+                            <td>{{id}}</td>
+                            <td>{{fecha}}</td>
+                            <td>{{calle}}</td>
+                            <td>{{altura}}</td>
+                            <td>{{total}}</td>
+                        </tr>
+                        {{else}}
+                        <tr>
+                            <td colspan="4">No hay mas filas</td>
+                        </tr>
+                        {{/each}}
+                    </table>
+
+                    <!--<button class="btn btn-success">Enviar</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+
+    <a class="btn btn-success" href="/admin/home">Volver</a>
+
+</div>
