@@ -1,0 +1,24 @@
+<div>
+    {{#if fin}}
+        <p> Su carrito </p>
+    {{else}}
+        <p> Articulo agregado al carrito </p>
+    {{/if}}
+
+    {{#each carrito}}
+        <p>
+            {{ cantidad }}
+            {{ nombre }}
+            {{ precio }}
+        </p>
+    {{/each}}
+
+    {{#if fin}}
+        <form action="./comprar" method="post">
+            <button>Completar compra</button>
+        </form>
+    {{/if}}
+
+    <a class="btn btn-info" href="javascript:history.back()">Volver</a>
+</div>
+
