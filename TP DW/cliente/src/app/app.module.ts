@@ -12,6 +12,7 @@ import { AuthGuard } from './auth.guard'
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { UsuariosHabitacionesComponent } from './components/usuarios-habitaciones/usuarios-habitaciones.component';
 import { UsuariosService } from './services/usuarios.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UsuariosService } from './services/usuarios.service';
     UsuariosIngresarComponent,
     UsuariosRegistrarComponent,
     InicioComponent,
-    UsuariosHabitacionesComponent
+    UsuariosHabitacionesComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

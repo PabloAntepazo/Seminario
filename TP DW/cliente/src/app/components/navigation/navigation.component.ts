@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
-import { Router } from '@angular/router'
+import { Router, RouterLink } from '@angular/router'
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -9,12 +10,11 @@ import { Router } from '@angular/router'
 export class NavigationComponent implements OnInit {
 
   login_: boolean = false;
-  constructor(private usuariosService: UsuariosService) { }
+  constructor(private usuariosService: UsuariosService, private router: Router) { }
 
   ngOnInit(): void {
     this.usuariosService.logued$.subscribe(log => {
       this.login_ = true;})
-
     }
 
   logout() {

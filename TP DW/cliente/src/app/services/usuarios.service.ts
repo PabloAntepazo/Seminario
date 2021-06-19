@@ -38,4 +38,10 @@ export class UsuariosService {
   registrar(usuario: any) {
     return this.http.post(`${this.API_URI}/signup`, usuario);
   }
-}
+//   listarHabitaciones() {
+//     //para expandir/especializar las variables usamos ` y no ' o " alt + 96
+//     //Las variables salen pintadas de otro color diferente del de texto
+//     return this.http.get(`${this.API_URI}/list`);
+//     //si no funciona usar 
+//     //return this.http.get(this.API_URI+'/list');
+ }

@@ -9,6 +9,8 @@ import { Router } from '@angular/router'
 })
 export class UsuariosHabitacionesComponent implements OnInit {
 
+  habitaciones: any;
+
   constructor(private usuarioService: UsuariosService, private router: Router) { }
 
   ngOnInit(): void {
