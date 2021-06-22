@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
-import { Router } from '@angular/router'
+import { Router} from '@angular/router';
 
 
 @Component({
@@ -29,13 +29,15 @@ export class UsuariosIngresarComponent implements OnInit {
         console.log(result);
         localStorage.setItem('rol', result.rol);
         localStorage.setItem('token', result.token);
+        localStorage.setItem('idPersona', result.idPersona);
         this.usuariosService.logued$.emit();
         if (result.rol == "admin") {
+          this.usuariosService.admin$.emit();
           console.log(result);
-          this.router.navigate(['usuarios/registrar'])
+          this.router.navigate(['admin/home'])
         }
         else {
-          this.router.navigate(['usuarios/habitaciones']);
+          this.router.navigate(['usuarios/home']);
         }
       },
       err => {

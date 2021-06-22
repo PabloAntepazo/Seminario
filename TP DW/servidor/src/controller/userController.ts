@@ -11,7 +11,7 @@ class UserController {
 	public async login(req: Request, res: Response) {
 		const { mail, password } = req.body;
 		const result = await userModel.buscarUsuario(mail);
-		console.log(result);
+		console.log(result.idPersona);
 		console.log(mail, password);
 
 		if (!result) {
@@ -26,13 +26,13 @@ class UserController {
 				//req.session.admin = true;
 				//res.redirect("../admin/home");
 				const token: string = jwt.sign({ _id: result.id }, "secretKey");
-				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol });
+				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
 				return;
 			}
 			else {
 				//req.session.admin = false;
 				const token: string = jwt.sign({ _id: result.id }, "secretKey");
-				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol });
+				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
 				return;
 			}
 

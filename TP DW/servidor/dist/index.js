@@ -13,6 +13,7 @@ const express_handlebars_1 = __importDefault(require("express-handlebars"));
 const path_1 = __importDefault(require("path"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const adminRoutes_1 = __importDefault(require("./routes/adminRoutes"));
+const comentarioRoutes_1 = __importDefault(require("./routes/comentarioRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -33,7 +34,10 @@ class Server {
         this.app.set('view engine', '.hbs'); //ejecutamos el modulo definido
         //Middlewares
         this.app.use(morgan_1.default('dev'));
-        this.app.use(cors_1.default()); //iniciamos cors
+        this.app.use(cors_1.default({
+            origin: ["http://localhost:4200"],
+            credentials: true
+        })); //iniciamos cors
         this.app.use(express_1.default.json()); //habilitamos el intercambio de objetos json entre aplicaciones
         this.app.use(express_1.default.urlencoded({ extended: false })); //habilitamos para recibir datos a traves de formularios html.
         //this.app.use(flash());
@@ -50,6 +54,7 @@ class Server {
         this.app.use(indexRoutes_1.default);
         this.app.use("/user", userRoutes_1.default); //user sera un objeto existene en la app.
         this.app.use("/admin", adminRoutes_1.default); //user sera un objeto existene en la app.
+        this.app.use("/comentario", comentarioRoutes_1.default); //user sera un objeto existene en la app.
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

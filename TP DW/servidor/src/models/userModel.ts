@@ -11,7 +11,7 @@ class UserModel {
 			host: 'localhost',
 			user: 'root',
 			password: '',
-			database: 'dbhoteles',
+			database: 'testing',
 			connectionLimit: 10
 		});
 	}

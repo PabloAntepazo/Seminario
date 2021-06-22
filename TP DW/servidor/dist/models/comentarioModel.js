@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const promise_1 = require("mysql2/promise");
-class UserModel {
+class ComentarioModel {
     constructor() {
         this.config(); //aplicamos la conexion con la BD.
     }
@@ -25,30 +25,51 @@ class UserModel {
             });
         });
     }
-    buscarUsuario(mail) {
+    listar() {
         return __awaiter(this, void 0, void 0, function* () {
-            const encontrado = yield this.db.query('SELECT * FROM persona WHERE mail = ?', [mail]);
+            //const db=this.connection;
+            const comentario = yield this.db.query('SELECT * FROM comentario ORDER BY fcreacion desc');
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return comentario[0];
+        });
+    }
+    //Devuelve un objeto cuya fila en la tabla usuarios coincide con id.
+    //Si no la encuentra devuelve null
+    buscarId(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM comentario WHERE id = ?', [id]);
             //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
             if (encontrado.length > 1)
                 return encontrado[0][0];
             return null;
         });
     }
-    crearUsuario(persona) {
+    // async buscarNombre(nombre: string) {
+    //     const encontrado: any = await this.db.query('SELECT * FROM comentario WHERE nombre = ?', [nombre]);
+    //     //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+    //     if (encontrado.length > 1)
+    //         return encontrado[0][0];
+    //     return null;
+    // }
+    //Devuelve 1 si logro crear un nuevo usuario de la tabla usuarios
+    crear(comentario) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = (yield this.db.query('INSERT INTO persona SET ?', [persona]))[0].affectedRows;
+            const result = (yield this.db.query('INSERT INTO comentario SET ?', [comentario]))[0].affectedRows;
             console.log(result);
             return result;
         });
     }
-    crear(usuario) {
+    //Devuelve 1 si logro eliminar el usuario indicado por id
+    eliminar(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = (yield this.db.query('INSERT INTO persona SET ?', [usuario]))[0].affectedRows;
-            console.log(result);
-            return result;
+            const comentario = (yield this.db.query('DELETE FROM comentario WHERE ID = ?', [id]))[0].affectedRows;
+            console.log(comentario);
+            return comentario;
         });
     }
 }
-const userModel = new UserModel();
-exports.default = userModel;
-//# sourceMappingURL=userModel.js.map
+//Exportamos el enrutador con 
+const comentarioModel = new ComentarioModel();
+exports.default = comentarioModel;
+//# sourceMappingURL=comentarioModel.js.map

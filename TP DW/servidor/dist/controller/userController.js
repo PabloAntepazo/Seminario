@@ -24,7 +24,7 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const { mail, password } = req.body;
             const result = yield userModel_1.default.buscarUsuario(mail);
-            console.log(result);
+            console.log(result.idPersona);
             console.log(mail, password);
             if (!result) {
                 return res.status(404).json({ message: "Usuario no registrado" });
@@ -38,13 +38,13 @@ class UserController {
                     //req.session.admin = true;
                     //res.redirect("../admin/home");
                     const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
-                    res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol });
+                    res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
                     return;
                 }
                 else {
                     //req.session.admin = false;
                     const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
-                    res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol });
+                    res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
                     return;
                 }
             }
