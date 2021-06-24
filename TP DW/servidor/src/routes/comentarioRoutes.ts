@@ -1,5 +1,7 @@
 import { Router, Request, Response } from 'express';
 import comentarioController from '../controller/comentarioController';
+import { TokenValidation } from '../lib/verifyToken';
+
 
 class ComentarioRoutes {
 
@@ -16,11 +18,11 @@ class ComentarioRoutes {
             //res.render("partials/principal");
         });
 
-        this.router.get('/list', comentarioController.list);
-        this.router.get('/find/:id', comentarioController.find);
-        this.router.post('/create', comentarioController.create);
-        this.router.delete('/delete/:id', comentarioController.delete);
-        this.router.get('/ordenar', comentarioController.ordenar);
+        this.router.get('/list', TokenValidation, comentarioController.list);
+        this.router.get('/find/:id', TokenValidation, comentarioController.find);
+        this.router.post('/create', TokenValidation, comentarioController.create);
+        this.router.delete('/delete/:id', TokenValidation, comentarioController.delete);
+        this.router.get('/ordenar', TokenValidation, comentarioController.ordenar);
 
     }
 }

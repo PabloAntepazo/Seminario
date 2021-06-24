@@ -1,5 +1,7 @@
 import { Router, Request, Response } from 'express';
 import adminController from '../controller/adminController';
+import { TokenValidation } from '../lib/verifyToken';
+
 
 class AdminRoutes {
 
@@ -10,13 +12,13 @@ class AdminRoutes {
     config(): void {
         this.router.get('/', (req: Request, res: Response) => { res.send('Main!!!'); });
 
-        this.router.get("/abmproductos", adminController.abm);
+        this.router.get("/abmproductos", TokenValidation, adminController.abm);
 
-        this.router.delete("/delete/:id", adminController.delete);
+        this.router.delete("/delete/:id", TokenValidation, adminController.delete);
 
-        this.router.post("/agregar", adminController.agregar);
+        this.router.post("/agregar", TokenValidation, adminController.agregar);
 
-        this.router.post("/modificar", adminController.modificar);    
+        this.router.post("/modificar", TokenValidation, adminController.modificar);
     }
 }
 

@@ -54,6 +54,32 @@ class UserController {
 	public async addUser(req: Request, res: Response) {
 		const datos = req.body;
 		delete datos.repassword;
+		const patronNombre: RegExp = /^[A-Z][A-Za-z]{3,14}$/;
+		const patronApellido: RegExp = /^[A-Z][A-Za-z]{3,14}$/;
+		const patronPass: RegExp = /^[A-Z][A-Za-z0-9]{6,20}$/;
+		const patronEmail: RegExp = /[a-z0-9]{1,10}@[a-z0-9]{1,10}.[a-z]{2,3}/;
+		const patronDNI: RegExp = /^[0-9]{7,9}$/;
+		const patronTelefono: RegExp = /^[0-9]{8,10}$/;
+
+
+		if (!patronEmail.test(datos.mail)) {
+			res.status(403).json({ message: "Mail invalido" });
+		}
+		if (!patronPass.test(datos.contrasenia)) {
+			res.status(403).json({ message: "Contraseña invalida" });
+		}
+		if (!patronNombre.test(datos.nombre)) {
+			res.status(403).json({ message: "Nombre invalido" });
+		}
+		if (!patronApellido.test(datos.apellido)) {
+			res.status(403).json({ message: "Apellido invalido" });
+		}
+		if (!patronDNI.test(datos.dni)) {
+			res.status(403).json({ message: "DNI invalido" });
+		}
+		if (!patronTelefono.test(datos.telefono)) {
+			res.status(403).json({ message: "Telefono invalido" });
+		}
 		const resultado = await userModel.buscarUsuario(datos.mail);
 		if (!resultado) {
 			datos.rol = 'user'

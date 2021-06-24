@@ -5,6 +5,7 @@ import comentarioModel from '../models/comentarioModel';
 
 class ComentarioController {
     public async list(req: Request, res: Response) {
+        console.log(req.header("Authorization"));
         console.log(req.body);
         //console.log(req.header("Authorization"));
         const comentario = await comentarioModel.listar();
@@ -15,6 +16,7 @@ class ComentarioController {
     }
 
     public async find(req: Request, res: Response) {
+        console.log(req.header("Authorization"));
         console.log(req.params.id);
         const { id } = req.params;
         const comentario = await comentarioModel.buscarId(id);
@@ -25,6 +27,7 @@ class ComentarioController {
     }
 
     public async create(req: Request, res: Response) {
+        console.log(req.header("Authorization"));
         const comentario = req.body;
         console.log(req.body);
 
@@ -39,6 +42,7 @@ class ComentarioController {
     }
 
     public async delete(req: Request, res: Response) {
+        console.log(req.header("Authorization"));
         console.log(req.body);
         //res.send('Usuario '+ req.params.id +' Eliminado!!!');
         const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
@@ -48,6 +52,7 @@ class ComentarioController {
     }
 
     public async ordenar(req: Request, res: Response) {
+        console.log(req.header("Authorization"));
         console.log(req.body);
         const result = await comentarioModel.ordenar();
         //return res.json({ text: 'deleting a user ' + id });
