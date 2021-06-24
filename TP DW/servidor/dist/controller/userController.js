@@ -64,30 +64,6 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const datos = req.body;
             delete datos.repassword;
-            const patronNombre = /^[A-Z][A-Za-z]{3,14}$/;
-            const patronApellido = /^[A-Z][A-Za-z]{3,14}$/;
-            const patronPass = /^[A-Z][A-Za-z0-9]{6,20}$/;
-            const patronEmail = /[a-z0-9]{1,10}@[a-z0-9]{1,10}.[a-z]{2,3}/;
-            const patronDNI = /^[0-9]{7,9}$/;
-            const patronTelefono = /^[0-9]{8,10}$/;
-            if (!patronEmail.test(datos.mail)) {
-                res.status(403).json({ message: "Mail invalido" });
-            }
-            if (!patronPass.test(datos.contrasenia)) {
-                res.status(403).json({ message: "Contraseña invalida" });
-            }
-            if (!patronNombre.test(datos.nombre)) {
-                res.status(403).json({ message: "Nombre invalido" });
-            }
-            if (!patronApellido.test(datos.apellido)) {
-                res.status(403).json({ message: "Apellido invalido" });
-            }
-            if (!patronDNI.test(datos.dni)) {
-                res.status(403).json({ message: "DNI invalido" });
-            }
-            if (!patronTelefono.test(datos.telefono)) {
-                res.status(403).json({ message: "Telefono invalido" });
-            }
             const resultado = yield userModel_1.default.buscarUsuario(datos.mail);
             if (!resultado) {
                 datos.rol = 'user';

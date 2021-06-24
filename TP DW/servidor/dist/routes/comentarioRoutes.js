@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const comentarioController_1 = __importDefault(require("../controller/comentarioController"));
-const verifyToken_1 = require("../lib/verifyToken");
 class ComentarioRoutes {
     constructor() {
         this.router = express_1.Router();
@@ -19,11 +18,11 @@ class ComentarioRoutes {
             req.session.user = {};
             //res.render("partials/principal");
         });
-        this.router.get('/list', verifyToken_1.TokenValidation, comentarioController_1.default.list);
-        this.router.get('/find/:id', verifyToken_1.TokenValidation, comentarioController_1.default.find);
-        this.router.post('/create', verifyToken_1.TokenValidation, comentarioController_1.default.create);
-        this.router.delete('/delete/:id', verifyToken_1.TokenValidation, comentarioController_1.default.delete);
-        this.router.get('/ordenar', verifyToken_1.TokenValidation, comentarioController_1.default.ordenar);
+        this.router.get('/list', comentarioController_1.default.list);
+        this.router.get('/find/:id', comentarioController_1.default.find);
+        this.router.post('/create', comentarioController_1.default.create);
+        this.router.delete('/delete/:id', comentarioController_1.default.delete);
+        this.router.get('/ordenar', comentarioController_1.default.ordenar);
     }
 }
 const comentarioRoutes = new ComentarioRoutes();

@@ -16,7 +16,6 @@ const comentarioModel_1 = __importDefault(require("../models/comentarioModel"));
 class ComentarioController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.header("Authorization"));
             console.log(req.body);
             //console.log(req.header("Authorization"));
             const comentario = yield comentarioModel_1.default.listar();
@@ -27,7 +26,6 @@ class ComentarioController {
     }
     find(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.header("Authorization"));
             console.log(req.params.id);
             const { id } = req.params;
             const comentario = yield comentarioModel_1.default.buscarId(id);
@@ -39,7 +37,6 @@ class ComentarioController {
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.header("Authorization"));
             const comentario = req.body;
             console.log(req.body);
             //res.send('Usuario agregado!!!');
@@ -53,7 +50,6 @@ class ComentarioController {
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.header("Authorization"));
             console.log(req.body);
             //res.send('Usuario '+ req.params.id +' Eliminado!!!');
             const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
@@ -64,7 +60,6 @@ class ComentarioController {
     }
     ordenar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.header("Authorization"));
             console.log(req.body);
             const result = yield comentarioModel_1.default.ordenar();
             //return res.json({ text: 'deleting a user ' + id });
