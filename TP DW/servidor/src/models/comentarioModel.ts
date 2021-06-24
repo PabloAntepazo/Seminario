@@ -55,6 +55,14 @@ class ComentarioModel {
         return comentario;
     }
 
+    async ordenar() {
+        //const db=this.connection;
+        const comentario = await this.db.query('SELECT * FROM comentario ORDER BY fcreacion asc');
+        //console.log(usuarios[0]);
+        //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+        return comentario[0];
+    }
+
 }
 
 //Exportamos el enrutador con 

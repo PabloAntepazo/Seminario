@@ -14,17 +14,22 @@ export class ComentariosComponent implements OnInit {
   rolPersona = localStorage.getItem('rol');
   idPersona = localStorage.getItem('idPersona');
   comentario = { comentario: "", imagen: "", personaID: this.idPersona };
+  flag: boolean = false;
+  errorComentario = 0;
+  errorImagen = 0;
 
   constructor(private usuariosService: UsuariosService, private router: Router) { }
 
   ngOnInit(): void {
+
     this.usuariosService.listarComentario().subscribe(
       res => {
         this.comentarios = res;
-        console.log(res)
+        console.log(res);
       },
       err => console.log(err)
     )
+
   }
 
   crearComentario() {
@@ -51,4 +56,74 @@ export class ComentariosComponent implements OnInit {
       err => console.log(err.error.message)
     )
   }
+
+
+  ordenarxID() {
+
+    if (this.flag == false) {
+      this.usuariosService.listarComentario().subscribe(
+        res => {
+          this.comentarios = res;
+          console.log(res)
+          this.flag = true;
+        },
+        err => console.log(err)
+      )
+    }
+
+    if (this.flag == true) {
+      this.usuariosService.ordenarID().subscribe(
+        res => {
+          let resultado: any = res;
+          this.comentarios = res;
+          this.flag = false;
+          console.log(resultado.result);
+        },
+        err => console.log(err.error.message)
+      )
+    }
+  }
+
+
+  verificarComentario(com: string) {
+    if (com.length == 0)
+      return 1;
+    if (com.length > 1000)
+      return 2;
+    return 0;
+  }
+
+  verificarImagen(img: string) {
+    if (img.length == 0) { return 1; }
+
+    return 0;
+  }
+
+  verificarForm(): boolean {
+    this.errorComentario = this.verificarComentario(this.comentario.comentario);
+    this.errorImagen = this.verificarImagen(this.comentario.imagen);
+    if (this.errorComentario + this.errorImagen > 0) {
+      return false;
+    }
+    return true;
+  }
+
+  limpiarComentario() {
+    if (this.errorComentario > 0) {
+      console.log("Limpiar comentario");
+      this.comentario.comentario = "";
+      this.errorComentario = 0;
+    }
+
+  }
+
+  limpiarImagen() {
+    if (this.errorImagen > 0) {
+      console.log("Limpiar comentario");
+      this.comentario.imagen = "";
+      this.errorImagen = 0;
+    }
+
+  }
+
 }

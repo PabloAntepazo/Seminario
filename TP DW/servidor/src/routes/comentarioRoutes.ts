@@ -20,6 +20,7 @@ class ComentarioRoutes {
         this.router.get('/find/:id', comentarioController.find);
         this.router.post('/create', comentarioController.create);
         this.router.delete('/delete/:id', comentarioController.delete);
+        this.router.get('/ordenar', comentarioController.ordenar);
 
     }
 }

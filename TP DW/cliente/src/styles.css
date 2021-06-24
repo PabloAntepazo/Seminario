@@ -5,3 +5,14 @@
   font-weight: bolder;
   font-size: small;
 }
+
+.DivErrorComent {
+  background-color: rgb(248, 100, 100);
+  font-family: Verdana;
+  font-weight: bolder;
+  font-size: small;
+  width: 330px;
+  margin-left: 1.5mm;
+
+
+}

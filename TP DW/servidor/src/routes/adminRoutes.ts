@@ -8,12 +8,15 @@ class AdminRoutes {
         this.config();
     }
     config(): void {
-        this.router.get('/', (req: Request, res: Response) => {
-            res.send('Main!!!');
-            //res.render("partials/principal");
-        });
+        this.router.get('/', (req: Request, res: Response) => { res.send('Main!!!'); });
 
-        this.router.get('')
+        this.router.get("/abmproductos", adminController.abm);
+
+        this.router.delete("/delete/:id", adminController.delete);
+
+        this.router.post("/agregar", adminController.agregar);
+
+        this.router.post("/modificar", adminController.modificar);    
     }
 }
 

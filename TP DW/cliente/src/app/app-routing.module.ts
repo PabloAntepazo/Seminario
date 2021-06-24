@@ -17,10 +17,15 @@ const routes: Routes = [
   {
     path: 'usuarios/inicio',
     component: InicioComponent,
-    //canActivate: [AuthGuard]
+
   },
   {
     path: 'usuarios/habitaciones',
+    component: UsuariosHabitacionesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/habitaciones',
     component: UsuariosHabitacionesComponent,
     canActivate: [AuthGuard]
   },

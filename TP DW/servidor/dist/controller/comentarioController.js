@@ -32,7 +32,7 @@ class ComentarioController {
             if (comentario)
                 return res.json(comentario);
             //res.render('./find/{{id}}');
-            res.status(404).json({ text: "User doesn't exists" });
+            res.status(404).json({ message: "Comentario no Encontrado" });
         });
     }
     create(req, res) {
@@ -43,27 +43,29 @@ class ComentarioController {
             // const busqueda = await comentarioModel.buscarNombre(comentario.nombre);
             // if (!busqueda) {
             const result = yield comentarioModel_1.default.crear(comentario);
-            return res.status(200).json({ message: 'User saved!!' });
+            return res.status(200).json({ message: 'Comentario Agregado' });
             // }
             // return res.status(403).json({ message: 'User exists!!' });
         });
     }
-    // public async update(req: Request, res: Response) {
-    //     console.log(req.body);
-    //     const { id } = req.params;
-    //     const result = await userModel.actualizar(req.body, id);
-    //     //res.send('Usuario '+ req.params.id +' actualizado!!!');
-    //     res.render('./update');
-    //     //return res.json({ text: 'updating a user ' + id });
-    // }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
             //res.send('Usuario '+ req.params.id +' Eliminado!!!');
             const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
             const result = yield comentarioModel_1.default.eliminar(id);
-            return res.json({ text: 'deleting a user ' + id });
+            return res.json({ message: "Comentario Eliminado" });
             //res.redirect('../controls');
+        });
+    }
+    ordenar(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const result = yield comentarioModel_1.default.ordenar();
+            //return res.json({ text: 'deleting a user ' + id });
+            //res.redirect('../controls');
+            console.log(result);
+            return res.json(result);
         });
     }
 }

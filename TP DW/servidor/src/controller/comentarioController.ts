@@ -21,7 +21,7 @@ class ComentarioController {
         if (comentario)
             return res.json(comentario);
         //res.render('./find/{{id}}');
-        res.status(404).json({ text: "User doesn't exists" });
+        res.status(404).json({ message: "Comentario no Encontrado" });
     }
 
     public async create(req: Request, res: Response) {
@@ -33,28 +33,30 @@ class ComentarioController {
         // if (!busqueda) {
         const result = await comentarioModel.crear(comentario);
 
-        return res.status(200).json({ message: 'User saved!!' });
+        return res.status(200).json({ message: 'Comentario Agregado' });
         // }
         // return res.status(403).json({ message: 'User exists!!' });
     }
-
-    // public async update(req: Request, res: Response) {
-    //     console.log(req.body);
-    //     const { id } = req.params;
-    //     const result = await userModel.actualizar(req.body, id);
-    //     //res.send('Usuario '+ req.params.id +' actualizado!!!');
-    //     res.render('./update');
-    //     //return res.json({ text: 'updating a user ' + id });
-    // }
 
     public async delete(req: Request, res: Response) {
         console.log(req.body);
         //res.send('Usuario '+ req.params.id +' Eliminado!!!');
         const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
         const result = await comentarioModel.eliminar(id);
-        return res.json({ text: 'deleting a user ' + id });
+        return res.json({ message: "Comentario Eliminado" });
         //res.redirect('../controls');
     }
+
+    public async ordenar(req: Request, res: Response) {
+        console.log(req.body);
+        const result = await comentarioModel.ordenar();
+        //return res.json({ text: 'deleting a user ' + id });
+        //res.redirect('../controls');
+        console.log(result);
+        return res.json(result)
+
+    }
+
 
 
 }

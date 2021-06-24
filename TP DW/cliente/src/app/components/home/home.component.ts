@@ -16,5 +16,4 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.rol = localStorage.getItem('rol');
   }
-
 }

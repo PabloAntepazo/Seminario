@@ -48,6 +48,40 @@ class UserModel {
             return result;
         });
     }
+    listarhabitaciones() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const habitaciones = yield this.db.query('SELECT * FROM habitaciones');
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return habitaciones[0];
+        });
+    }
+    eliminar(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const art = (yield this.db.query('DELETE FROM habitaciones WHERE idH = ?', [id]))[0].affectedRows;
+            return art;
+        });
+    }
+    // async buscarNombre(descripcion: string) {
+    //     const encontrado: any = await this.db.query('SELECT * FROM habitaciones WHERE descripcion = ?', [descripcion]);
+    //     if (encontrado.length > 1)
+    //         return encontrado[0][0];
+    //     return null;
+    // }
+    crearHabitacion(categoria, descripcion, precio) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query("INSERT INTO habitaciones (categoria, descripcion, precio) values(?, ?, ?)", [categoria, descripcion, precio]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
+    actualizar(id, categoria, descripcion, precio) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('UPDATE habitaciones SET categoria = ?,descripcion = ?, precio = ?  WHERE idH = ?', [categoria, descripcion, precio, id]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
 }
 const userModel = new UserModel();
 exports.default = userModel;
