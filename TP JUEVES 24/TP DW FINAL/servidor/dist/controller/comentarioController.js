@@ -31,9 +31,9 @@ class ComentarioController {
             console.log(req.header("Authorization"));
             const { id } = req.params;
             const comentario = yield comentarioModel_1.default.buscarId(id);
-            if (comentario)
+            if (comentario) {
                 return res.json(comentario);
-            //res.render('./find/{{id}}');
+            }
             res.status(404).json({ message: "Comentario no Encontrado" });
         });
     }

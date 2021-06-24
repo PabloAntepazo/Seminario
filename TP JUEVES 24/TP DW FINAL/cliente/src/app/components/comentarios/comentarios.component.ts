@@ -17,11 +17,11 @@ export class ComentariosComponent implements OnInit {
   flag: boolean = false;
   errorComentario = 0;
   errorImagen = 0;
+  buscarTexto = "";
 
   constructor(private usuariosService: UsuariosService, private router: Router) { }
 
   ngOnInit(): void {
-
     this.usuariosService.listarComentario().subscribe(
       res => {
         this.comentarios = res;
@@ -33,7 +33,6 @@ export class ComentariosComponent implements OnInit {
   }
 
   crearComentario() {
-    console.log(this.comentario);
     this.usuariosService.guardarComentario(this.comentario).subscribe(
       res => {
         let result: any = res;
@@ -57,9 +56,21 @@ export class ComentariosComponent implements OnInit {
     )
   }
 
+  filtrar(buscarTexto: any) {
+    this.usuariosService.filtrarID(buscarTexto).subscribe(
+      res => {
+        this.comentarios = res;
+        console.log(res)
+
+      },
+      err => {
+        console.log(err);
+        window.alert("ERROR: INGRESE UN VALOR PARA FILTRAR");
+      }
+    )
+  }
 
   ordenarxID() {
-
     if (this.flag == false) {
       this.usuariosService.listarComentario().subscribe(
         res => {

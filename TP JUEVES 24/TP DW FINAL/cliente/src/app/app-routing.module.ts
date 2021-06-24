@@ -66,11 +66,7 @@ const routes: Routes = [
 
   },
 ];
-/*
-*****************************************
-AGREGAR VALIDACION TOKEN DEL LADO DEL SERVIDOR
-*****************************************
-*/
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

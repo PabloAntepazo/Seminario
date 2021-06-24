@@ -63,7 +63,7 @@ export class UsuariosService {
     return this.http.delete(`${this.API_URI2}/delete/${comentario.id}`);
   }
 
-  ordenarID(){
+  ordenarID() {
     return this.http.get(`${this.API_URI2}/ordenar`);
 
   }
@@ -88,5 +88,10 @@ export class UsuariosService {
     console.log("Entre al metodo: actualizarHabitacion");
     console.log(actualizarHab);
     return this.http.post(`${this.API_URI3}/modificar`, actualizarHab);
+  }
+
+  filtrarID(searchText: string) {
+    console.log(searchText);
+    return this.http.get(`${this.API_URI2}/find/${searchText}`);
   }
 }

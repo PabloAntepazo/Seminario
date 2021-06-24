@@ -24,22 +24,14 @@ class ComentarioModel {
         return comentario[0];
     }
 
-    //Devuelve un objeto cuya fila en la tabla usuarios coincide con id.
-    //Si no la encuentra devuelve null
     async buscarId(id: string) {
         const encontrado: any = await this.db.query('SELECT * FROM comentario WHERE id = ?', [id]);
         //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
         if (encontrado.length > 1)
-            return encontrado[0][0];
+            return encontrado[0];
         return null;
     }
-    // async buscarNombre(nombre: string) {
-    //     const encontrado: any = await this.db.query('SELECT * FROM comentario WHERE nombre = ?', [nombre]);
-    //     //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
-    //     if (encontrado.length > 1)
-    //         return encontrado[0][0];
-    //     return null;
-    // }
+  
 
     //Devuelve 1 si logro crear un nuevo usuario de la tabla usuarios
     async crear(comentario: object) {

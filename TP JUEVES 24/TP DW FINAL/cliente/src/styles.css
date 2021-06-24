@@ -13,6 +13,10 @@
   font-size: small;
   width: 330px;
   margin-left: 1.5mm;
+}
 
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
