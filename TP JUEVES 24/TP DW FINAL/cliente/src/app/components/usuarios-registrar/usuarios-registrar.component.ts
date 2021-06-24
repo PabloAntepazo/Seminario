@@ -31,6 +31,7 @@ export class UsuariosRegistrarComponent implements OnInit {
       res => {
         let result: any = res;
         console.log(result.message);
+        this.router.navigate(["usuarios/ingresar"]);
       },
       err => {
         console.log(err.error.message);
