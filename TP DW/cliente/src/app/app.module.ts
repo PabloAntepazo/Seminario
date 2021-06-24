@@ -12,8 +12,7 @@ import { AuthGuard } from './auth.guard'
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { UsuariosHabitacionesComponent } from './components/usuarios-habitaciones/usuarios-habitaciones.component';
 import { UsuariosService } from './services/usuarios.service';
-import { HomeComponent } from './components/home/home.component';
-import { ComentariosComponent } from './components/comentarios/comentarios.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -24,8 +23,7 @@ import { ComentariosComponent } from './components/comentarios/comentarios.compo
     UsuariosRegistrarComponent,
     InicioComponent,
     UsuariosHabitacionesComponent,
-    HomeComponent,
-    ComentariosComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,

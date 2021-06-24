@@ -6,13 +6,10 @@
   font-size: small;
 }
 
-.DivErrorComent {
-  background-color: rgb(248, 100, 100);
-  font-family: Verdana;
-  font-weight: bolder;
-  font-size: small;
-  width: 330px;
-  margin-left: 1.5mm;
-
-
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.712);
+  margin-bottom: 0%;
 }
