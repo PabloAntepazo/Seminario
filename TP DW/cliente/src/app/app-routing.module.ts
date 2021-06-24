@@ -5,6 +5,9 @@ import { InicioComponent } from "./components/inicio/inicio.component";
 import { UsuariosHabitacionesComponent } from "./components/usuarios-habitaciones/usuarios-habitaciones.component";
 import { AuthGuard } from './auth.guard';
 import { UsuariosRegistrarComponent } from "./components/usuarios-registrar/usuarios-registrar.component"
+import { HomeComponent } from "./components/home/home.component"
+import { ComentariosComponent } from "./components/comentarios/comentarios.component"
+
 
 const routes: Routes = [
   {
@@ -14,10 +17,15 @@ const routes: Routes = [
   {
     path: 'usuarios/inicio',
     component: InicioComponent,
-    //canActivate: [AuthGuard]
+
   },
   {
     path: 'usuarios/habitaciones',
+    component: UsuariosHabitacionesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/habitaciones',
     component: UsuariosHabitacionesComponent,
     canActivate: [AuthGuard]
   },
@@ -32,6 +40,30 @@ const routes: Routes = [
   {
     path: 'inicio',
     component: InicioComponent
+  },
+  {
+    path: 'admin/home',
+    component: HomeComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'usuarios/home',
+    component: HomeComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'usuarios/comentarios',
+    component: ComentariosComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'admin/comentarios',
+    component: ComentariosComponent,
+    canActivate: [AuthGuard]
+
   },
 ];
 /*
