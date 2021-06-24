@@ -10,7 +10,7 @@ class AdminRoutes {
         this.config();
     }
     config(): void {
-        this.router.get('/', (req: Request, res: Response) => { res.send('Main!!!'); });
+        this.router.get('/',  (req: Request, res: Response) => { res.send('Main!!!'); });
 
         this.router.get("/abmproductos", TokenValidation, adminController.abm);
 
