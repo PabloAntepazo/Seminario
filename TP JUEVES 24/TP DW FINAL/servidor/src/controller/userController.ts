@@ -75,7 +75,7 @@ class UserController {
 			res.status(403).json({ message: "Apellido invalido" });
 		}
 		if (!patronDNI.test(datos.dni)) {
-			res.status(403).json({ message: "DNI invalido" });
+			res.status(403).json({ message: "DNI deberia ser numerico sin puntos!!" });
 		}
 		if (!patronTelefono.test(datos.telefono)) {
 			res.status(403).json({ message: "Telefono invalido" });
