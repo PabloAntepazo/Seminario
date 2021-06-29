@@ -45,6 +45,12 @@ class ComentarioController {
             //res.send('Usuario agregado!!!');
             // const busqueda = await comentarioModel.buscarNombre(comentario.nombre);
             // if (!busqueda) {
+            // if (comentario.descripcion.length == 0 || comentario.descripcion.length > 1000) {
+            //     res.json({ message: 'Comentario no guardado!!' });
+            // }
+            // if (comentario.imagen.length == 0) {
+            //     res.json({ message: 'Comentario no guardado!!' });
+            // }
             const result = yield comentarioModel_1.default.crear(comentario);
             return res.status(200).json({ message: 'Comentario Agregado' });
             // }
