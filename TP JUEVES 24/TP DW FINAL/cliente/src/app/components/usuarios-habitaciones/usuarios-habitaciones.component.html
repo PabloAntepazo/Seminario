@@ -1,5 +1,5 @@
 <div *ngIf="rol == 'admin'">
-  <table class="table table-hover table-light ">
+  <table class="table table-hover table-dark ">
     <thead class="thead-dark">
       <th>ID</th>
       <th>Categoria</th>
@@ -11,10 +11,17 @@
     <tbody>
       <tr ng-form *ngFor="let habitacion of habitaciones">
         <td><input type="number" name="id" [(ngModel)]="habitacion.idH" disabled></td>
-        <td><input type="text" name="categoria" [(ngModel)]="habitacion.categoria"></td>
+        <!-- <td><input type="text" name="categoria" [(ngModel)]="habitacion.categoria"></td> -->
+        <td>
+          <select name="categoria" [(ngModel)]="habitacion.categoria">
+            <option name="categoria" [(ngModel)]="habitacion.categoria">Basica</option>
+            <option name="categoria" [(ngModel)]="habitacion.categoria">Estandar</option>
+            <option name="categoria" [(ngModel)]="habitacion.categoria">Premium</option>
+          </select>
+        </td>
         <td><input type="text" name="descripcion" [(ngModel)]="habitacion.descripcion" id="inputDesc"></td>
         <td><input type="number" name="precio" [(ngModel)]="habitacion.precio"></td>
-        <td><button class="btn btn-xs btn-primary" (click)=modificar(habitacion)>Modificar</button></td>
+        <td><button class="btn btn-xs btn-primary" (click)=modificarYverificar(habitacion)>Modificar</button></td>
         <td><a class="btn btn-danger" (click)=eliminar(habitacion)>Eliminar</a></td>
       </tr>
     </tbody>
@@ -26,23 +33,42 @@
     <BR>
     <div class="">
       <p>Categoria: </p>
-      <input type="text" name="Categoria" [(ngModel)]="nuevaHab.categoria" placeholder="Ingrese una categoria" required>
+      <input type="text" name="Categoria" [(ngModel)]="nuevaHab.categoria" placeholder="Ingrese una categoria" required
+        (focus)="limpiarCategoria()">
+      <div id="DivHab" [ngSwitch]="errorCategoria">
+        <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+        <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de numeros</div>
+      </div>
     </div>
     <div class="">
       <p>Descripcion: </p>
       <input type="text" name="descripcion" [(ngModel)]="nuevaHab.descripcion" placeholder="Ingrese una descripcion"
-        required>
+        required (focus)="limpiarDescripcion()">
+      <div id="DivHab" [ngSwitch]="errorDescripcion">
+        <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+        <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de numeros</div>
+      </div>
     </div>
     <div>
       <p>Precio: </p>
-      <input type="number" name="precio" [(ngModel)]="nuevaHab.precio" placeholder="Ingrese un precio" required>
+      <input type="number" name="precio" [(ngModel)]="nuevaHab.precio" placeholder="Ingrese un precio" required
+        (focus)="limpiarPrecio()">
+    </div>
+    <div id="DivHab" [ngSwitch]="errorPrecio">
+      <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+      <div class="DivError" *ngSwitchCase="2"> El precio no puede ser 0</div>
+      <div class="DivError" *ngSwitchCase="3"> Precio invalido, un precio no puede ser negativo</div>
     </div>
     <br>
-    <div><button class="" (click)=agregar() id="btnAgregar">Agregar</button></div>
+    <div id="divAg"><button id="btAg" class="btn btn-outline-secondary" style="width: 100px;"
+        (click)=agregarYverificar() id="btnAgregar">Agregar</button>
+    </div>
     <BR>
   </div>
-
 </div>
+
+
+
 
 <div *ngIf="rol == 'user'">
   <table class="table table-hover table-light center">

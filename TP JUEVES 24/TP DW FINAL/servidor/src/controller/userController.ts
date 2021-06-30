@@ -58,28 +58,144 @@ class UserController {
 		const patronNombre = /^[A-Z][A-Za-z]{3,14}$/;
 		const patronApellido = /^[A-Z][A-Za-z]{3,14}$/;
 		const patronPass = /^[A-Z][A-Za-z0-9]{6,20}$/;
-		const patronEmail = /[a-z0-9]{1,10}@[a-z0-9]{1,10}.[a-z]{2,3}/;
+		const patronEmail = /[a-z0-9]{1,14}@[a-z0-9]{1,10}.[a-z]{2,3}/;
 		const patronDNI = /^[0-9]{7,9}$/;
 		const patronTelefono = /^[0-9]{8,10}$/;
-		
+
+		//MAIL
+		if (datos.mail.length == 0) {
+			res.status(403).json({ message: "No ha ingresado ningun MAIL!!" });
+		}
+		if (datos.mail.length > 27) {
+			res.status(403).json({ message: "Excedió el limite maximo(27) de caracteres para el campo MAIL!!" });
+		}
+		if (datos.mail.length < 6) {
+			res.status(403).json({ message: "El mail debe de contener entre 6 caracteres como minimo!!" });
+		}
 		if (!patronEmail.test(datos.mail)) {
-			res.status(403).json({ message: "Mail invalido" });
+			res.status(403).json({ message: "Mail invalido, debe ser example@dominio.com" });
+		}
+		//FUNCIONAN LAS VALIDACIONES
+		// FIN MAIL
+
+
+		//CONTRASEÑA
+		if (datos.contrasenia.length == 0) {
+			res.status(403).json({ message: "No ha ingresado ninguna CONTRASEÑA!!" });
+		}
+		if (datos.contrasenia.length > 20) {
+			res.status(403).json({ message: "Excedió el limite maximo (20) de caracteres para el campo CONTRASEÑA!!" });
+		}
+		if (datos.contrasenia.length < 6) {
+			res.status(403).json({ message: "La contraseña debe de contener entre 6 y 20 caracteres!!" });
 		}
 		if (!patronPass.test(datos.contrasenia)) {
-			res.status(403).json({ message: "Contraseña invalida" });
+			res.status(403).json({
+				message: "Contraseña invalida, debe debe ser alfanumerica y contener mayusculas."
+			});
+		}
+		//FUNCIONAN LAS VALIDACIONES
+		// FIN CONTRASEÑA
+
+
+		//NOMBRE
+		if (datos.nombre.length == 0) {
+			res.status(403).json({
+				error: "No ha ingresado ningun nombre!!"
+			});
+		}
+		if (datos.nombre.length > 14) {
+			res.status(403).json({
+				error: "Excedió el limite maximo (14) de caracteres para el campo NOMBRE!!"
+			});
+		}
+		if (datos.nombre.length < 3) {
+			res.status(403).json({
+				error: "Nombre invalido, debe contener entre 3 y 14 caracteres!!"
+			});
 		}
 		if (!patronNombre.test(datos.nombre)) {
-			res.status(403).json({ message: "Nombre invalido" });
+			res.status(403).json({
+				error: "Nombre invalido, debe comenzar con mayuscula y no poseer numeros."
+			});
+		}
+		//FUNCIONAN LAS VALIDACIONES		
+		// FIN NOMBRE
+
+
+		//APELLIDO
+		if (datos.apellido.length == 0) {
+			res.status(403).json({
+				error: "No ha ingresado ningun apellido!!"
+			});
+		}
+		if (datos.apellido.length > 14) {
+			res.status(403).json({
+				error: "Excedió el limite maximo (14) de caracteres para el campo APELLIDO!!"
+			});
+		}
+		if (datos.apellido.length < 3) {
+			res.status(403).json({
+				error: "Apellido invalido, debe contener entre 3 y 14 caracteres!!"
+			});
 		}
 		if (!patronApellido.test(datos.apellido)) {
-			res.status(403).json({ message: "Apellido invalido" });
+			res.status(403).json({
+				error: "Apellido invalido, debe comenzar con mayuscula y no poseer numeros."
+			});
+		}
+		//FUNCIONAN LAS VALIDACIONES		
+		// FIN APELLIDO
+
+
+		//DNI
+		if (datos.dni.length == 0) {
+			res.status(403).json({
+				error: "No ha ingresado ningun DNI!!"
+			});
+		}
+		if (datos.dni.length > 10) {
+			res.status(403).json({
+				error: "Excedió el limite maximo (8) de digitos para el campo DNI!!"
+			});
+		}
+		if (datos.dni.length < 8) {
+			res.status(403).json({
+				error: "DNI invalido, debe contener entre 7 y 8 digitos!!"
+			});
 		}
 		if (!patronDNI.test(datos.dni)) {
-			res.status(403).json({ message: "DNI deberia ser numerico sin puntos!!" });
+			res.status(403).json({
+				error: "DNI invalido, debe contener solo numeros, sin puntos ni espacios."
+			});
+		}
+		//FUNCIONAN LAS VALIDACIONES
+		// FIN DNI
+
+
+		//TELEFONO
+		if (datos.telefono.length == 0) {
+			res.status(403).json({
+				error: "No ha ingresado ningun telefono!!"
+			});
+		}
+		if (datos.telefono.length > 9) {
+			res.status(403).json({
+				error: "Excedió el limite maximo (10) de digitos para el campo TELEFONO!!"
+			});
+		}
+		if (datos.telefono.length < 7) {
+			res.status(403).json({
+				error: "Telefono invalido, debe contener entre 8 y 10 digitos!!"
+			});
 		}
 		if (!patronTelefono.test(datos.telefono)) {
-			res.status(403).json({ message: "Telefono invalido" });
+			res.status(403).json({
+				error: "Telefono invalido, debe contener solo numeros, sin guiones ni espacios."
+			});
 		}
+		// FIN TELEFONO
+
 		const resultado = await userModel.buscarUsuario(datos.mail);
 		if (!resultado) {
 			datos.rol = 'user'

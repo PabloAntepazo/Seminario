@@ -53,7 +53,8 @@
             <div [ngSwitch]="errorPassword">
               <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
               <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de caracteres</div>
-              <div class="DivError" *ngSwitchCase="3"> Contraseña invalida, debe ser alfanumerica y tener
+              <div class="DivError" *ngSwitchCase="3"> La contraseña debe de contener 8 caracteres como minimo</div>
+              <div class="DivError" *ngSwitchCase="4"> Contraseña invalida, debe ser alfanumerica y tener
                 mayusculas.</div>
             </div>
             <input type="password" name="repassword" [(ngModel)]="user.repassword" placeholder="Repetir Contraseña"
