@@ -10,8 +10,8 @@
     </thead>
     <tbody>
       <tr ng-form *ngFor="let habitacion of habitaciones">
-        <td id="cb2"><input type="number" name="id" [(ngModel)]="habitacion.idH" disabled id="inputID"></td>
-        <!-- <td><input type="text" name="categoria" [(ngModel)]="habitacion.categoria"></td> -->
+        <td id="cb2">{{habitacion.idH}}</td>
+        <!-- <td id="cb2"><input type="number" name="id" [(ngModel)]="habitacion.idH" disabled id="inputID"></td> -->
         <td id="CB">
           <select name="selector" [(ngModel)]="habitacion.categoria">
             <option name="opcion1">Basica</option>
@@ -40,8 +40,6 @@
         <option name="categoria2">Estandar</option>
         <option name="categoria3">Premium</option>
       </select>
-      <!-- <input type="text" name="Categoria" [(ngModel)]="nuevaHab.categoria" placeholder="Ingrese una categoria" required
-        (focus)="limpiarCategoria()"> -->
       <div id="DivHab" [ngSwitch]="errorCategoria">
         <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
         <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de numeros</div>
@@ -80,7 +78,7 @@
 
 
 <div *ngIf="rol == 'user'">
-  <table class="table table-hover table-light center">
+  <table class="table table-hover table-dark">
     <thead class="thead-dark">
       <th>ID</th>
       <th>Categoria</th>
