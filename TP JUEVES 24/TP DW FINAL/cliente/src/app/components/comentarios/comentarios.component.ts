@@ -32,7 +32,26 @@ export class ComentariosComponent implements OnInit {
 
   }
 
+  // crearComentario() {
+  //   this.usuariosService.guardarComentario(this.comentario).subscribe(
+  //     res => {
+  //       let result: any = res;
+  //       console.log(result.message);
+  //       this.ngOnInit();
+  //     },
+  //     err => {
+  //       console.log(err.error.message);
+  //     }
+  //   )
+  // }
+
   crearComentario() {
+
+    var str = new String(this.comentario.comentario);
+
+    console.log(str);
+
+
     this.usuariosService.guardarComentario(this.comentario).subscribe(
       res => {
         let result: any = res;

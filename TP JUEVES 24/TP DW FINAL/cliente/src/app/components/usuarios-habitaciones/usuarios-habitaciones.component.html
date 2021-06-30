@@ -10,19 +10,21 @@
     </thead>
     <tbody>
       <tr ng-form *ngFor="let habitacion of habitaciones">
-        <td><input type="number" name="id" [(ngModel)]="habitacion.idH" disabled></td>
+        <td id="cb2"><input type="number" name="id" [(ngModel)]="habitacion.idH" disabled id="inputID"></td>
         <!-- <td><input type="text" name="categoria" [(ngModel)]="habitacion.categoria"></td> -->
-        <td>
-          <select name="categoria" [(ngModel)]="habitacion.categoria">
-            <option name="categoria" [(ngModel)]="habitacion.categoria">Basica</option>
-            <option name="categoria" [(ngModel)]="habitacion.categoria">Estandar</option>
-            <option name="categoria" [(ngModel)]="habitacion.categoria">Premium</option>
+        <td id="CB">
+          <select name="selector" [(ngModel)]="habitacion.categoria">
+            <option name="opcion1">Basica</option>
+            <option name="opcion2">Estandar</option>
+            <option name="opcion3">Premium</option>
           </select>
         </td>
-        <td><input type="text" name="descripcion" [(ngModel)]="habitacion.descripcion" id="inputDesc"></td>
-        <td><input type="number" name="precio" [(ngModel)]="habitacion.precio"></td>
-        <td><button class="btn btn-xs btn-primary" (click)=modificarYverificar(habitacion)>Modificar</button></td>
-        <td><a class="btn btn-danger" (click)=eliminar(habitacion)>Eliminar</a></td>
+        <td id="cb2"><input type="text" name="descripcion" [(ngModel)]="habitacion.descripcion" id="inputDesc"></td>
+        <td id="cb2"><input type="number" name="precio" [(ngModel)]="habitacion.precio"></td>
+        <td id="btn"><button class="btn btn-outline-warning" (click)=modificarYverificar(habitacion)
+            id="btnMod">Modificar</button>
+        </td>
+        <td id="btn"><a class="btn btn-outline-danger" (click)=eliminar(habitacion) id="btnEli">Eliminar</a></td>
       </tr>
     </tbody>
   </table>
@@ -32,16 +34,22 @@
   <div ng-form class="container-fluid alert-info">
     <BR>
     <div class="">
-      <p>Categoria: </p>
-      <input type="text" name="Categoria" [(ngModel)]="nuevaHab.categoria" placeholder="Ingrese una categoria" required
-        (focus)="limpiarCategoria()">
+      <label id="lab1">Categoria:</label>
+      <select id="CBCat" name="selector" [(ngModel)]="nuevaHab.categoria">
+        <option name="categoria1">Basica</option>
+        <option name="categoria2">Estandar</option>
+        <option name="categoria3">Premium</option>
+      </select>
+      <!-- <input type="text" name="Categoria" [(ngModel)]="nuevaHab.categoria" placeholder="Ingrese una categoria" required
+        (focus)="limpiarCategoria()"> -->
       <div id="DivHab" [ngSwitch]="errorCategoria">
         <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
         <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de numeros</div>
       </div>
     </div>
+    <br>
     <div class="">
-      <p>Descripcion: </p>
+      <label id="lab2">Descripcion:</label>
       <input type="text" name="descripcion" [(ngModel)]="nuevaHab.descripcion" placeholder="Ingrese una descripcion"
         required (focus)="limpiarDescripcion()">
       <div id="DivHab" [ngSwitch]="errorDescripcion">
@@ -49,8 +57,9 @@
         <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de numeros</div>
       </div>
     </div>
+    <br>
     <div>
-      <p>Precio: </p>
+      <label id="lab3">Precio: </label>
       <input type="number" name="precio" [(ngModel)]="nuevaHab.precio" placeholder="Ingrese un precio" required
         (focus)="limpiarPrecio()">
     </div>
