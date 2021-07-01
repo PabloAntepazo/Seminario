@@ -133,6 +133,9 @@ export class UsuariosRegistrarComponent implements OnInit {
     if (password != repassword) {
       return 1;
     }
+    if (repassword.length == 0) {
+      return 2;
+    }
     return 0;
   }
 

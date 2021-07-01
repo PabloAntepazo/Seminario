@@ -3,8 +3,8 @@
   <form class="form-inline my-2 my-lg-0">
     <input class="form-control mr-sm-2" type="text" placeholder="Filtrar por ID"
       (keyup.enter)="filtrar(buscarTexto.value)" #buscarTexto>
-    <button (click)="filtrar(buscarTexto.value)" class="btn btn-primary my-sm-0"
-      type="button">Buscar</button>
+    <button (click)="filtrar(buscarTexto.value)" style="width: 100px; font-weight: bold;"
+      class="btn btn-outline-primary my-sm-0" type="button">Buscar</button>
   </form>
 </div>
 
@@ -12,7 +12,8 @@
   <thead class="thead-dark">
     <th>ID</th>
     <th>Comentario</th>
-    <th><button id="Crear" (click)=ordenarxID()>Fecha</button></th>
+    <th><button class="btn btn-block btn-outline-light" style="width: 190px; font-weight: bold;"
+        (click)=ordenarxID()>Ordenar Fecha</button></th>
     <th>IdPersona</th>
     <th>Imagen</th>
     <th>Accion</th>
@@ -24,7 +25,7 @@
       <td>{{comentario.fcreacion}}</td>
       <td>{{comentario.personaID}}</td>
       <td><img src={{comentario.imagen}} alt=""></td>
-      <td><a *ngIf="comentario.personaID == idPersona || rolPersona == 'admin'" class="btn btn-danger btn-block"
+      <td><a *ngIf="comentario.personaID == idPersona || rolPersona == 'admin'" class="btn btn-outline-danger btn-block"
           (click)=eliminar(comentario)>Eliminar</a></td>
     </tr>
   </tbody>
@@ -43,24 +44,21 @@
   <div class="row">
     <div class="col-md-4 mx-auto">
       <div class="card text-center">
-        <div class="card-header">
+        <div id="divSession" class="card-header">
           <h3>Comentarios</h3>
         </div>
-        <form (submit)="crearComentario()">          
+        <form id="divSession" (submit)="crearComentario()">
           <div class="form-group">
-            <input id="caja" type="text" name="descripcion" [(ngModel)]="comentario.comentario"
+            <input  id="divInput" id="caja" type="text" name="descripcion" [(ngModel)]="comentario.comentario"
               (focus)="limpiarComentario()" placeholder="Comentario">
             <div [ngSwitch]="errorComentario">
               <div class="DivErrorComent" *ngSwitchCase="1">Error, campo vacio</div>
               <div class="DivErrorComent" *ngSwitchCase="2">Error, excedió el limite maximo de caracteres</div>
             </div>
-            <input id="cajaimagen" type="text" name="imagen" [(ngModel)]="comentario.imagen" placeholder="Imagen"
-              (focus)="limpiarImagen()">
-            <div [ngSwitch]="errorImagen">
-              <div class="DivErrorComent" *ngSwitchCase="1">Error, campo vacio</div>
-            </div>
+            <input id="divInput" id="cajaimagen" type="text" name="imagen" [(ngModel)]="comentario.imagen" placeholder="Imagen">
             <br>
-            <button class="btn btn-small btn-success" (click)="verificarForm()" type="submit">Crear</button>
+            <button class="btn btn-block btn-outline-success" style="font-weight: bold;" (click)="verificarForm()"
+              type="submit">Crear</button>
           </div>
         </form>
       </div>

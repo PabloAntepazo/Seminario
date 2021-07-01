@@ -1,3 +1,13 @@
+<br>
+<div *ngIf="rol == 'admin'">
+  <form class="form-inline my-2 my-lg-0">
+    <!-- <input class="form-control mr-sm-2" type="text" placeholder="Filtrar por ID"
+      (keyup.enter)="filtrar(buscarTexto.value)" #buscarTexto>
+    <button (click)="filtrar(buscarTexto.value)" style="width: 100px; font-weight: bold;"
+      class="btn btn-outline-primary my-sm-0" type="button">Buscar</button> -->
+  </form>
+</div>
+
 <div *ngIf="rol == 'admin'">
   <table class="table table-hover table-dark ">
     <thead class="thead-dark">
@@ -21,17 +31,18 @@
         </td>
         <td id="cb2"><input type="text" name="descripcion" [(ngModel)]="habitacion.descripcion" id="inputDesc"></td>
         <td id="cb2"><input type="number" name="precio" [(ngModel)]="habitacion.precio"></td>
-        <td id="btn"><button class="btn btn-outline-warning" (click)=modificarYverificar(habitacion)
-            id="btnMod">Modificar</button>
+        <td id="btn"><button class="btn btn-outline-warning" style="font-weight: bold;"
+            (click)=modificarYverificar(habitacion) id="btnMod">Modificar</button>
         </td>
-        <td id="btn"><a class="btn btn-outline-danger" (click)=eliminar(habitacion) id="btnEli">Eliminar</a></td>
+        <td id="btn"><a class="btn btn-outline-danger" style="font-weight: bold;" (click)=eliminar(habitacion)
+            id="btnEli">Eliminar</a></td>
       </tr>
     </tbody>
   </table>
 
 
 
-  <div ng-form class="container-fluid alert-info">
+  <div class="container alert-link alert-dark" style="margin-left: 0; width: 358px;">
     <BR>
     <div class="">
       <label id="lab1">Categoria:</label>
@@ -67,7 +78,7 @@
       <div class="DivError" *ngSwitchCase="3"> Precio invalido, un precio no puede ser negativo</div>
     </div>
     <br>
-    <div id="divAg"><button id="btAg" class="btn btn-outline-secondary" style="width: 100px;"
+    <div id="divAg"><button id="btAg" class="btn btn-outline-dark" style="font-weight: bold; width: 188px;"
         (click)=agregarYverificar() id="btnAgregar">Agregar</button>
     </div>
     <BR>

@@ -20,3 +20,28 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+body {
+  background-image: url(assets/img/fondoweb4.png);
+  background-position: center center;
+  background-size: cover;
+}
+
+/* .fondo {
+  width: 1600px;
+  height: 1545px;
+  padding: 0 300px;
+  object-fit: contain;
+} */
+
+#espaciado {
+  padding-right: 6cm;
+}
+
+#divSession {
+  background-color: blanchedalmond;
+}
+#divInput {
+  border-color: black;
+  color: black;
+}

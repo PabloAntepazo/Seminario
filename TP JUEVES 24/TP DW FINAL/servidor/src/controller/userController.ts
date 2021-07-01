@@ -207,7 +207,6 @@ class UserController {
 		}
 		res.status(403).json({ message: 'Error, ya existe el usuario' });
 	}
-
 }
 
 const userController = new UserController();

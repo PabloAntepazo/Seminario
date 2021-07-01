@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -34,10 +34,10 @@ export class UsuariosIngresarComponent implements OnInit {
         if (result.rol == "admin") {
           this.usuariosService.admin$.emit();
           console.log(result);
-          this.router.navigate(['admin/home'])
+          this.router.navigate(['admin/habitaciones'])
         }
         else {
-          this.router.navigate(['usuarios/home']);
+          this.router.navigate(['usuarios/habitaciones']);
         }
       },
       err => {
