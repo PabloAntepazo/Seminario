@@ -20,7 +20,7 @@
   <tbody *ngIf="comentarios.length > 0; else fila">
     <tr *ngFor=" let comentario of comentarios">
       <td>{{comentario.id}}</td>
-      <td>{{comentario.comentario}}</td>
+      <td [innerHTML]="comentario.comentario">{{comentario.comentario}}</td>
       <td>{{comentario.fcreacion}}</td>
       <td>{{comentario.personaID}}</td>
       <td><img src={{comentario.imagen}} alt=""></td>
@@ -46,7 +46,7 @@
         <div class="card-header">
           <h3>Comentarios</h3>
         </div>
-        <form (submit)="crearComentario()">
+        <form (submit)="crearComentario()">          
           <div class="form-group">
             <input id="caja" type="text" name="descripcion" [(ngModel)]="comentario.comentario"
               (focus)="limpiarComentario()" placeholder="Comentario">

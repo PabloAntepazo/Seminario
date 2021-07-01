@@ -51,7 +51,6 @@ export class ComentariosComponent implements OnInit {
 
     console.log(str);
 
-
     this.usuariosService.guardarComentario(this.comentario).subscribe(
       res => {
         let result: any = res;
