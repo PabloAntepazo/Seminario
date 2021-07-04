@@ -2,8 +2,26 @@
 <div class="header">
   <div class="logo-col">
     <a class="navbar-brand" href="#">
-      <img id="logo" src="https://media.hrs.com/media/image/01/99/b7/hotel-dummy.png" width="100" height="62">
+      <img id="logo" src="../assets/img/logo.png" width="100" height="62">
     </a>
+    <div class="text-end">
+      <div *ngIf="!login_" class="">
+        <button type="button" class="btn btn-outline-light me-2" style="font-weight: bold;" routerLink="usuarios/ingresar">
+          <i class="fa fa-sign-in-alt"></i>
+          <span class="btn-text">&nbsp;Iniciar Sesión</span>
+        </button>
+        <button type="button" class="btn btn-outline-warning me-2" style="font-weight: bold;" routerLink="usuarios/registrar">
+          <i class="fa fa-user-plus"></i>
+          <span class="btn-text">&nbsp;Registrarse</span>
+        </button>
+      </div>
+      <div id="CS" *ngIf="login_" class="">
+        <button type="button" class="btn btn-outline-light me-2" style="font-weight: bold;" id="logout" (click)="logout()">
+          <i class="fa fa-sign-out-alt"></i>
+          <span class="btn-text">&nbsp;Cerrar Sesión</span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
