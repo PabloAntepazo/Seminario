@@ -1,3 +1,70 @@
+
+<div class="header">
+  <div class="logo-col">
+    <a class="navbar-brand" href="#">
+      <img id="logo" src="https://media.hrs.com/media/image/01/99/b7/hotel-dummy.png" width="100" height="62">
+    </a>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()"></a>
+
+  <a class="navbar-toggler d-lg-none"
+    href="javascript:void(0);"
+    data-toggle="collapse"
+    data-target="#navbarResponsive"
+    aria-controls="navbarResponsive"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </a>
+
+  <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="login_">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
+          <span>
+            <i class="fa fa-home"></i>&nbsp;
+            <span>Home</span>
+          </span>
+        </a>
+      </li>
+      <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="sub-menu">
+          <span>
+            <i class="fa fa-concierge-bell"></i>&nbsp;
+            <span>Acerca de</span>
+          </span>
+        </a>
+        <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="sub-menu">
+          <li>
+            <a class="dropdown-item" (click)="collapseNavbar()">
+              <i class="fa fa-users"></i>&nbsp;
+              <span>Nosotros</span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="collapseNavbar()">
+              <i class="fa fa-bed"></i>&nbsp;
+              <span>El Hotel</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
+          <span>
+            <i class="fa fa-file-signature"></i>&nbsp;
+            <span>Contacto</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!--
 <header class="p-3 bg-dark text-white">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-right justify-content-lg-start">
@@ -32,10 +99,7 @@
           <li *ngIf="!admin_" class="nav-item active">
             <a class="nav-link" routerLink="usuarios/comentarios">Comentarios<span class="sr-only">(current)</span></a>
           </li>
-  
-          <!-- <li class="nav-item active">
-            <a class="nav-link" id="logout" (click)="logout()">Cerrar sesion</a>
-          </li> -->
+
         </ul>
         </nav>
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -55,6 +119,7 @@
     </div>
   </div>
 </header>
+-->
 <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +141,7 @@
       </nav>
 
      ------------ <nav *ngIf="login_" class="navbar navbar-expand-lg navbar-dark bg-dark">
-        
+
         <li *ngIf="admin_" class="nav-item active">
           <a class="nav-link" routerLink="admin/home">Home<span class="sr-only">(current)</span></a>
         </li>

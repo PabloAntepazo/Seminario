@@ -22,7 +22,7 @@ class Server {
     }
     config() {
         //Configuraciones
-        this.app.set('port', process.env.PORT || 3000);
+        this.app.set('port', process.env.PORT || 5000);
         this.app.set('views', path_1.default.join(__dirname, 'views')); //indicamos que views esta en dist y no en el modulo principal
         this.app.engine('.hbs', express_handlebars_1.default({
             defaultLayout: 'main',

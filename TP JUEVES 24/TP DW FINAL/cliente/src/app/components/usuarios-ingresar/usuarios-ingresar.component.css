@@ -1,0 +1,38 @@
+.container {
+  height: 100vh;
+  background: var(--bg-color, white);
+  --bg-color: rgb(107, 129, 192);
+}
+
+.card {
+  border: none;
+}
+
+.form-group  {
+  margin: 1em;
+}
+
+.form-control {
+  border: none;
+}
+
+.btn {
+  width: 100%;
+  display: block;
+  padding: 0.75em;
+  margin: 2em;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 3em;
+}
+
+input {
+  font-family: "Font Awesome 5 Free", "Source Sans Pro";
+  font-weight: 900;
+}
+
+.form-text {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
