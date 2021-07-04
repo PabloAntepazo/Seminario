@@ -19,6 +19,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConstruccionComponent } from './components/construccion/construccion.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UsuariosHabitacionesComponent,
     HomeComponent,
     ComentariosComponent,
+    ConstruccionComponent
   ],
   imports: [
     BrowserModule,

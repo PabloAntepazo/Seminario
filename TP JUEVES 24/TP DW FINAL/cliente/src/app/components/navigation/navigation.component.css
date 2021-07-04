@@ -1,13 +1,12 @@
-
-#logout{
+#logout {
   cursor: pointer;
 }
 .bi {
-  vertical-align: -.125em;
+  vertical-align: -0.125em;
   fill: currentColor;
 }
 .me-2 {
-  margin-right: .7rem!important;
+  margin-right: 0.7rem !important;
 }
 .justify-content-center {
   justify-content: flex-start;
@@ -15,4 +14,9 @@
 
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255,255,255);
+}
+
+#CS {
+  margin-left: 80%;
+  min-width: 400px;
 }

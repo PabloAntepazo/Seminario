@@ -122,14 +122,19 @@ export class UsuariosRegistrarComponent implements OnInit {
       return 1;
     if (password.length > 21)
       return 2;
-    if (!patron.test(password))
+      if (password.length < 6)
       return 3;
+    if (!patron.test(password))
+      return 4;
     return 0;
   }
 
   verificarRePassword(password: any, repassword: any): number {
     if (password != repassword) {
       return 1;
+    }
+    if (repassword.length == 0) {
+      return 2;
     }
     return 0;
   }
@@ -189,6 +194,6 @@ export class UsuariosRegistrarComponent implements OnInit {
       this.user.repassword = "";
       this.errorRePassword = 0;
     }
- 
+
   }
 }

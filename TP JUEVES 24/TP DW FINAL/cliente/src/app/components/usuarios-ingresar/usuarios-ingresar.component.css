@@ -36,3 +36,9 @@ input {
   margin: 0;
   padding: 0;
 }
+#divSession {
+  background-color: blanchedalmond;
+}
+#divInput {
+  color: black;
+}

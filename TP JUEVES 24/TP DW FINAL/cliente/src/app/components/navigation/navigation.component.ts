@@ -26,7 +26,8 @@ export class NavigationComponent implements OnInit {
   logout() {
     //Es de notar que la redireccion del metodo logOut podria haberse hecho aqui y dejar el servicio lo mas acotado posible.
     this.usuariosService.logOut();
-    this.login_ = false
+    this.login_ = false;
+    this.admin_ = false;
   }
 
   collapseNavbar(): void {

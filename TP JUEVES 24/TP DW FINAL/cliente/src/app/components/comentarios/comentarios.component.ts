@@ -16,7 +16,6 @@ export class ComentariosComponent implements OnInit {
   comentario = { comentario: "", imagen: "", personaID: this.idPersona };
   flag: boolean = false;
   errorComentario = 0;
-  errorImagen = 0;
   buscarTexto = "";
 
   constructor(private usuariosService: UsuariosService, private router: Router) { }
@@ -32,7 +31,25 @@ export class ComentariosComponent implements OnInit {
 
   }
 
+  // crearComentario() {
+  //   this.usuariosService.guardarComentario(this.comentario).subscribe(
+  //     res => {
+  //       let result: any = res;
+  //       console.log(result.message);
+  //       this.ngOnInit();
+  //     },
+  //     err => {
+  //       console.log(err.error.message);
+  //     }
+  //   )
+  // }
+
   crearComentario() {
+
+    var str = new String(this.comentario.comentario);
+
+    console.log(str);
+
     this.usuariosService.guardarComentario(this.comentario).subscribe(
       res => {
         let result: any = res;
@@ -104,16 +121,9 @@ export class ComentariosComponent implements OnInit {
     return 0;
   }
 
-  verificarImagen(img: string) {
-    if (img.length == 0) { return 1; }
-
-    return 0;
-  }
-
   verificarForm(): boolean {
     this.errorComentario = this.verificarComentario(this.comentario.comentario);
-    this.errorImagen = this.verificarImagen(this.comentario.imagen);
-    if (this.errorComentario + this.errorImagen > 0) {
+    if (this.errorComentario > 0) {
       return false;
     }
     return true;
@@ -124,15 +134,6 @@ export class ComentariosComponent implements OnInit {
       console.log("Limpiar comentario");
       this.comentario.comentario = "";
       this.errorComentario = 0;
-    }
-
-  }
-
-  limpiarImagen() {
-    if (this.errorImagen > 0) {
-      console.log("Limpiar comentario");
-      this.comentario.imagen = "";
-      this.errorImagen = 0;
     }
 
   }
