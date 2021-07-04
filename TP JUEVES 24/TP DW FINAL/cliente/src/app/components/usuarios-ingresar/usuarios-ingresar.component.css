@@ -1,11 +1,16 @@
 .container {
   height: 100vh;
-  background: var(--bg-color, white);
-  --bg-color: rgb(107, 129, 192);
 }
 
 .card {
   border: none;
+  border-radius: 1.25rem;
+  background-color: antiquewhite;
+}
+
+.card-header {
+  border-radius: 1.25rem;
+  background-color: lightgray;
 }
 
 .form-group  {
@@ -17,12 +22,12 @@
 }
 
 .btn {
-  width: 100%;
+  width: 80%;
   display: block;
   padding: 0.75em;
   margin: 2em;
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 3em;
 }
 
@@ -36,9 +41,12 @@ input {
   margin: 0;
   padding: 0;
 }
+
 #divSession {
   background-color: blanchedalmond;
 }
+
 #divInput {
   color: black;
 }
+
