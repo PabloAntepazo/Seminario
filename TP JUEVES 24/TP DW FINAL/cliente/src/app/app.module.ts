@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,15 +7,19 @@ import { UsuariosIngresarComponent } from './components/usuarios-ingresar/usuari
 import { UsuariosRegistrarComponent } from './components/usuarios-registrar/usuarios-registrar.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AuthGuard } from './auth.guard'
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { UsuariosHabitacionesComponent } from './components/usuarios-habitaciones/usuarios-habitaciones.component';
 import { UsuariosService } from './services/usuarios.service';
 import { HomeComponent } from './components/home/home.component';
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConstruccionComponent } from './components/construccion/construccion.component';
-
 
 @NgModule({
   declarations: [
@@ -33,7 +37,13 @@ import { ConstruccionComponent } from './components/construccion/construccion.co
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    InputTextModule,
+    ToastModule,
+    NgbModule,
   ],
   providers: [
     UsuariosService,
@@ -44,6 +54,7 @@ import { ConstruccionComponent } from './components/construccion/construccion.co
       multi: true
     }
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

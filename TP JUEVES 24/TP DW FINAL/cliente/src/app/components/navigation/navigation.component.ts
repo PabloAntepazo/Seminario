@@ -10,6 +10,7 @@ export class NavigationComponent implements OnInit {
 
   login_: boolean = false;
   admin_: boolean = false;
+  isNavbarCollapsed = true;
 
   constructor(private usuariosService: UsuariosService) { }
 
@@ -29,4 +30,11 @@ export class NavigationComponent implements OnInit {
     this.admin_ = false;
   }
 
+  collapseNavbar(): void {
+    this.isNavbarCollapsed = true;
+  }
+
+  toggleNavbar(): void {
+    this.isNavbarCollapsed = !this.isNavbarCollapsed;
+  }
 }

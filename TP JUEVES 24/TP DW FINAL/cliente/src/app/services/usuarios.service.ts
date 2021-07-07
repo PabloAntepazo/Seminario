@@ -4,21 +4,18 @@ import { Comentario } from '../models/comentarioModel';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Habitacion } from '../models/habitacionModel';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
-
-
-  API_URI = 'http://localhost:3000/user';
-  API_URI2 = 'http://localhost:3000/comentario';
-  API_URI3 = 'http://localhost:3000/admin';
-
+  API_URI = environment.API_URI + '/user';
+  API_URI2 = environment.API_URI + '/comentario';
+  API_URI3 = environment.API_URI + '/admin';
 
   logued$ = new EventEmitter<string>();
   admin$ = new EventEmitter<string>();
-
 
   constructor(private http: HttpClient, private router: Router) { }
 
